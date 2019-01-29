@@ -22,6 +22,11 @@ public class BattleGameObjectMgr : MonoBehaviour
         }
     }
 
+    // TEST MERGE
+    // TEST TEST 
+    // TEST TESt
+
+
     /* 여기서 부터 필요한 내용들을 작성하면 된다 */
     private MainCameraCtrl m_mainCameraCtrl = null;
     private EnemyCntCtrl m_enemyCntCtrl = null;
@@ -33,7 +38,6 @@ public class BattleGameObjectMgr : MonoBehaviour
     private GameObject m_laboratoryPopUp = null;
     private GameObject m_labScroll = null;
     private GameObject m_repairScroll = null;
-    private GameObject m_labInfoScroll = null;
     private GameObject m_rightArrow = null;
     private GameObject m_leftArrow = null;
 
@@ -44,12 +48,12 @@ public class BattleGameObjectMgr : MonoBehaviour
     {
         get
         {
-           return  m_planetTransform.position;
+            return m_planetTransform.position;
         }
     }
 
     public void Init()
-    {      
+    {
         m_mainCameraCtrl = GameObject.FindGameObjectWithTag("MainCamera")?.GetComponent<MainCameraCtrl>();
         m_enemyCntCtrl = GameObject.FindGameObjectWithTag("ENEMY_CNT")?.GetComponent<EnemyCntCtrl>();
         m_planetHpCtrl = GameObject.FindGameObjectWithTag("PLANET_HP")?.GetComponent<PlanetHPCtrl>();
@@ -63,7 +67,6 @@ public class BattleGameObjectMgr : MonoBehaviour
         m_laboratoryPopUp = GameObject.FindGameObjectWithTag("LABORATORY_POPUP");
         m_labScroll = GameObject.Find("LabScroll");
         m_repairScroll = GameObject.Find("RepairScroll");
-        m_labInfoScroll = GameObject.Find("LabInfoScroll");
         m_rightArrow = GameObject.Find("RightArrow");
         m_leftArrow = GameObject.Find("LeftArrow");
 
@@ -97,7 +100,7 @@ public class BattleGameObjectMgr : MonoBehaviour
     public void UpdatePlanetHP(int maxHP, int curHP)
     {
         m_planetHpCtrl.MaxHP = maxHP;
-        m_planetHpCtrl.CurHP = curHP; 
+        m_planetHpCtrl.CurHP = curHP;
     }
 
     public void UpdateJunkCnt(int junkCnt)
@@ -122,14 +125,16 @@ public class BattleGameObjectMgr : MonoBehaviour
         m_leftArrow.SetActive(false);
         m_labScroll.SetActive(true);
         m_repairScroll.SetActive(false);
-        //m_labInfoScroll.SetActive(false);
+        foreach (GameObject m_LabInfoScroll in m_LabInfoScrolls)
+        {
+            m_LabInfoScroll.SetActive(false);
+        }
     }
 
     public void PopUpRepair()
     {
         m_labScroll.SetActive(false);
         m_repairScroll.SetActive(true);
-        //m_labInfoScroll.SetActive(false);
     }
 
     public void PopUpExit()
@@ -139,29 +144,25 @@ public class BattleGameObjectMgr : MonoBehaviour
         m_leftArrow.SetActive(true);
     }
 
-    public void PopUpLabInfo()
-    {
-        //m_labInfoScroll.SetActive(true);
-    }
-
-    public void PopUpLabInfoExit()
-    {
-        //m_labInfoScroll.SetActive(false);
-    }
+  
 
     // test
+
     public void PopUpLabInfos()
     {
         int ButtonIndex;
 
         for (int i = 0; i < m_LabButtons.Length; i++)
         {
-            if (this.gameObject == m_LabButtons[i])
+            if(this.gameObject==m_LabButtons[i])
             {
                 ButtonIndex = i;
 
                 m_LabInfoScrolls[ButtonIndex].SetActive(true);
             }
         }
+
+        
     }
+
 }

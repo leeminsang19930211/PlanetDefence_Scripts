@@ -22,11 +22,6 @@ public class BattleGameObjectMgr : MonoBehaviour
         }
     }
 
-    // TEST MERGE
-    // TEST TEST 
-    // TEST TESt
-
-
     /* 여기서 부터 필요한 내용들을 작성하면 된다 */
     private MainCameraCtrl m_mainCameraCtrl = null;
     private EnemyCntCtrl m_enemyCntCtrl = null;
@@ -100,7 +95,7 @@ public class BattleGameObjectMgr : MonoBehaviour
     public void UpdatePlanetHP(int maxHP, int curHP)
     {
         m_planetHpCtrl.MaxHP = maxHP;
-        m_planetHpCtrl.CurHP = curHP;
+        m_planetHpCtrl.CurHP = curHP; 
     }
 
     public void UpdateJunkCnt(int junkCnt)
@@ -144,25 +139,19 @@ public class BattleGameObjectMgr : MonoBehaviour
         m_leftArrow.SetActive(true);
     }
 
-  
-
     // test
-
     public void PopUpLabInfos()
     {
         int ButtonIndex;
 
         for (int i = 0; i < m_LabButtons.Length; i++)
         {
-            if(this.gameObject==m_LabButtons[i])
+            if (this.gameObject == m_LabButtons[i])
             {
                 ButtonIndex = i;
 
                 m_LabInfoScrolls[ButtonIndex].SetActive(true);
             }
         }
-
-        
     }
-
 }
